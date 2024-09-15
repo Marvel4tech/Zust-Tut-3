@@ -1,9 +1,16 @@
+import { useState } from "react"
 import { BiNote } from "react-icons/bi"
 
 const NoteApp = () => {
+    const [notes, setNotes] = useState([{id:1, title: "London 2025", body: " Planning for my London travel next year"},
+                                        {id:2, title: "York St Johb", body: " Welcome to school"},
+                                        {id:3, title: "Digital Marketing", body: " Learn about photography in the first semester"},
+                                        {id:4, title: "YouTuber", body: " New Camera FX30 with sigma 16 mm lens"},
+    ])
+
   return (
-    <div className=" max-w-6xl mx-auto h-full">
-        <div className=" flex flex-col h-full">
+    <div className=" max-w-6xl mx-auto">
+        <div className=" flex flex-col space-y-10">
             <div className=" flex justify-between">
                 <h2 className=" text-xl font-bold">NoteApp + Zustand/middleware</h2>
                 <BiNote className=" text-4xl" />
@@ -24,8 +31,15 @@ const NoteApp = () => {
                     </button>
                 </form>
             </div>
-            <div className=" border border-white h-full">
-                body
+            <div className=" border border-white p-5 ">
+                <ul className=" break-words grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
+                    {notes.map((note) => (
+                        <li key={note.id} className=" bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 h-52 p-4">
+                            <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
+                            <h2 className=" ">{note.body}</h2>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
     </div>
