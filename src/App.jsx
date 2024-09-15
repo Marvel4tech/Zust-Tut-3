@@ -4,8 +4,8 @@ import NoteApp from "./components/NoteApp"
 function App() {
 
   return (
-    <main className=" bg-white text-blue-950 dark:bg-blue-950 dark:text-white">
-        <NoteApp />
+    <main className=" dark:bg-blue-950 bg-white text-blue-950 dark:text-white h-screen px-5 py-5">
+      <NoteApp />
     </main>
   )
 }
