@@ -1,11 +1,12 @@
+import NoteApp from "./components/NoteApp"
 
 
 function App() {
 
   return (
-    <>
-      <p className=" bg-red-500">Hello</p>
-    </>
+    <main className=" bg-white text-blue-950 dark:bg-blue-950 dark:text-white">
+        <NoteApp />
+    </main>
   )
 }
 
