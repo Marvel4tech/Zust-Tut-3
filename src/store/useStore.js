@@ -9,8 +9,15 @@ const useNoteStore = create(
             addNotes: (addNote) => set((state) => ({ notes: [...state.notes, 
                 {id: v4(), title: addNote.title, body: addNote.body}]
             })),
+            deleteNote: (id) => set((state) => ({
+                notes: state.notes.filter((note) => note.id !== id)
+            })),
         })
     )
 )
 
 export default useNoteStore;
+
+//deleteNote: (id) => set((state) => ({ notes: state.notes.filter((
+   // note
+    //) => note.id !== id)})),

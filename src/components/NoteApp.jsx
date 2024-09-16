@@ -6,7 +6,7 @@ import { BsTrash } from "react-icons/bs"
 import { BiEdit } from "react-icons/bi"
 
 const NoteApp = () => {
-    const { notes, addNotes } = useNoteStore()
+    const { notes, addNotes, deleteNote } = useNoteStore()
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
 
@@ -16,6 +16,10 @@ const NoteApp = () => {
         addNotes(newNote);
         setTitle('');
         setBody('');
+    }
+
+    const handleDeleteNote = (id) => {
+       deleteNote(id);
     }
 
   return (
@@ -50,23 +54,25 @@ const NoteApp = () => {
             {notes.length > 0 ? (<div className=" border border-white p-5 ">
                 <ul className=" break-words grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
                     {notes.map((note) => (
-                        <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500  p-4">
+                        <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 h-52 p-4">
                             <div>
                                 <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
                                 <p className=" ">{note.body}</p>
                             </div>
                             <span className=" mt-auto flex justify-between gap-2">
-                                <button className=" flex items-center justify-center bg-slate-500 hover:bg-slate-600 rounded-sm text-white flex-1">
+                                <button className=" flex items-center justify-center bg-slate-500 hover:bg-slate-600 rounded-sm
+                                text-white flex-1">
                                     <BiEdit/>
                                 </button>
-                                <button className=" flex items-center justify-center bg-red-500 hover:bg-red-600 text-white py-2 flex-1 rounded-sm">
+                                <button className=" flex items-center justify-center bg-red-500 hover:bg-red-600 text-white 
+                                py-2 flex-1 rounded-sm" onClick={() => handleDeleteNote(note.id)}>
                                     <BsTrash className=" " />
                                 </button>
                             </span>
                         </li>
                     ))}
                 </ul>
-            </div>) : <p className=" text-center italic text-xl">List is Empty, Add New Note</p> }
+            </div>) : (<p className=" text-center italic text-xl">List is Empty, Add New Note</p>) }
         </div>
     </div>
   )
