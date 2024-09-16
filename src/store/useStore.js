@@ -17,7 +17,3 @@ const useNoteStore = create(
 )
 
 export default useNoteStore;
-
-//deleteNote: (id) => set((state) => ({ notes: state.notes.filter((
-   // note
-    //) => note.id !== id)})),
