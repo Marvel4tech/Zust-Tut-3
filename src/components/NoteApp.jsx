@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { BiNote } from "react-icons/bi"
 import useNoteStore from "../store/useStore"
+import { v4 } from "uuid"
 
 const NoteApp = () => {
     const { notes, addNotes } = useNoteStore()
@@ -9,7 +10,10 @@ const NoteApp = () => {
 
     const handleAddNewNote = (e) => {
         e.preventDefault()
-        
+        const newNote = { id: v4(), title, body }
+        addNotes(newNote)
+        setTitle('')
+        setBody('')
     }
 
   return (
