@@ -9,11 +9,11 @@ const NoteApp = () => {
     const [body, setBody] = useState('')
 
     const handleAddNewNote = (e) => {
-        e.preventDefault()
-        const newNote = { id: v4(), title, body }
-        addNotes(newNote)
-        setTitle('')
-        setBody('')
+        e.preventDefault();
+        const newNote = { id: v4(), title, body };
+        addNotes(newNote);
+        setTitle('');
+        setBody('');
     }
 
   return (
@@ -43,7 +43,7 @@ const NoteApp = () => {
                     </button>
                 </form>
             </div>
-            <div className=" border border-white p-5 ">
+            {notes.length > 0 ? (<div className=" border border-white p-5 ">
                 <ul className=" break-words grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
                     {notes.map((note) => (
                         <li key={note.id} className=" bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 h-52 p-4">
@@ -52,7 +52,7 @@ const NoteApp = () => {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </div>) : <p className=" text-center italic text-xl">List is Empty, Add New Note</p> }
         </div>
     </div>
   )
