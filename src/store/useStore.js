@@ -6,7 +6,7 @@ const useNoteStore = create(
     persist(
         (set) => ({
             notes: [{id: v4() , title: "London 2025", body: " Planning for my London travel next year"},
-                {id: v4(), title: "York St Johh", body: " Welcome to school"},
+                {id: v4(), title: "York St John", body: " Welcome to school"},
                 {id: v4(), title: "Digital Marketing", body: " Learn about photography in the first semester"},
                 {id: v4(), title: "YouTuber", body: " New Camera FX30 with sigma 16 mm lens"}
             ],
@@ -18,7 +18,3 @@ const useNoteStore = create(
 )
 
 export default useNoteStore;
-
-//addNote: (note) => set((state) => ({ notes: [...state.notes,
-//{id:state.notes.length+1, title: note.title, body: note.body}]
-//})),
