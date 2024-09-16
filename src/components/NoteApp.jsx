@@ -2,6 +2,8 @@ import { useState } from "react"
 import { BiNote } from "react-icons/bi"
 import useNoteStore from "../store/useStore"
 import { v4 } from "uuid"
+import { BsTrash } from "react-icons/bs"
+import { BiEdit } from "react-icons/bi"
 
 const NoteApp = () => {
     const { notes, addNotes } = useNoteStore()
@@ -30,12 +32,14 @@ const NoteApp = () => {
                         className=" w-full px-5 pb-2 bg-transparent border-b border-gray-400 outline-none"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        required
                     />
                     <textarea
                         placeholder=" Jot down your idea..."
                         className=" w-full px-5 bg-transparent border-b border-gray-400 outline-none resize-none mt-6 "
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
+                        required
                     />
                     <button type="submit" className=" hover:bg-green-600 transition-all duration-300 bg-green-500 px-6 py-2 rounded-md 
                     font-bold shadow-2xl shadow-black">
@@ -46,9 +50,19 @@ const NoteApp = () => {
             {notes.length > 0 ? (<div className=" border border-white p-5 ">
                 <ul className=" break-words grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
                     {notes.map((note) => (
-                        <li key={note.id} className=" bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 h-52 p-4">
-                            <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
-                            <h2 className=" ">{note.body}</h2>
+                        <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500  p-4">
+                            <div>
+                                <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
+                                <p className=" ">{note.body}</p>
+                            </div>
+                            <span className=" mt-auto flex justify-between gap-2">
+                                <button className=" flex items-center justify-center bg-slate-500 hover:bg-slate-600 rounded-sm text-white flex-1">
+                                    <BiEdit/>
+                                </button>
+                                <button className=" flex items-center justify-center bg-red-500 hover:bg-red-600 text-white py-2 flex-1 rounded-sm">
+                                    <BsTrash className=" " />
+                                </button>
+                            </span>
                         </li>
                     ))}
                 </ul>
