@@ -5,7 +5,7 @@ function App() {
 
   return (
     <main className=" dark:bg-blue-950 bg-white text-blue-950 dark:text-white min-h-screen px-5 py-5">
-      <NoteApp />
+        <NoteApp />
     </main>
   )
 }

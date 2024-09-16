@@ -1,12 +1,9 @@
 import { useState } from "react"
 import { BiNote } from "react-icons/bi"
+import useNoteStore from "../store/useStore"
 
 const NoteApp = () => {
-    const [notes, setNotes] = useState([{id:1, title: "London 2025", body: " Planning for my London travel next year"},
-                                        {id:2, title: "York St Johh", body: " Welcome to school"},
-                                        {id:3, title: "Digital Marketing", body: " Learn about photography in the first semester"},
-                                        {id:4, title: "YouTuber", body: " New Camera FX30 with sigma 16 mm lens"},
-    ])
+    const { notes } = useNoteStore()
 
   return (
     <div className=" max-w-6xl mx-auto">
