@@ -99,15 +99,15 @@ const Modal = ({ openModal, setOpenModal, handleModal }) => {
                     </button>
                     <form className=" mt-10">
                         <input
-                            className=" w-full px-5 pb-2 bg-transparent border-b border-gray-400 outline-none"
+                            className=" text-black w-full px-5 pb-2 bg-transparent border-b border-gray-400 outline-none"
                             required
                         />
                         <textarea
-                            className=" w-full px-5 bg-transparent border border-gray-400 outline-none h-52 mt-6 "
+                            className=" text-black w-full px-5 py-2 bg-transparent border border-gray-400 outline-none resize-none h-52 mt-6 "
                             required
                         />
                     </form>
-                    <div className=" space-x-2">
+                    <div className=" mt-5 space-x-2">
                         <button onClick={() => setOpenModal(false)} className=" text-black">Cancel</button>
                         <button className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md">Update</button>
                     </div>
