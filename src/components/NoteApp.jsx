@@ -8,7 +8,7 @@ import { FaTimes } from "react-icons/fa"
 
 
 const NoteApp = () => {
-    const { notes, addNotes, deleteNote } = useNoteStore()
+    const { notes, addNotes, deleteNote, editNote } = useNoteStore()
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [openModal, setOpenModal] = useState(false)
@@ -61,7 +61,8 @@ const NoteApp = () => {
             {notes.length > 0 ? (<div className=" border border-white p-5 ">
                 <ul className=" break-words grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
                     {notes.map((note) => (
-                        <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 h-52 p-4">
+                        <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 h-52 
+                        p-4">
                             <div>
                                 <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
                                 <p className=" ">{note.body}</p>
@@ -103,7 +104,8 @@ const Modal = ({ setOpenModal }) => {
                             required
                         />
                         <textarea
-                            className=" text-black w-full px-5 py-2 bg-transparent border border-gray-400 outline-none resize-none h-52 mt-6 "
+                            className=" text-black w-full px-5 py-2 bg-transparent border border-gray-400 outline-none resize-none h-52 
+                            mt-6 "
                             required
                         />
                     </form>
