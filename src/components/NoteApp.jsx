@@ -12,6 +12,7 @@ const NoteApp = () => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [openModal, setOpenModal] = useState(false)
+    const [editingNote, setEditingNote] = useState(null)
 
     const handleAddNewNote = (e) => {
         e.preventDefault();
@@ -25,8 +26,13 @@ const NoteApp = () => {
        deleteNote(id);
     }
 
-    const handleModal = () => {
+    const handleModal = (note) => {
         setOpenModal(!openModal)
+        setEditingNote(note)
+    }
+
+    const handleEditNote = (id, title, body) => {
+        editingNote(id, title, body)
     }
 
   return (
@@ -82,7 +88,7 @@ const NoteApp = () => {
                 </ul>
             </div>) : (<p className=" text-center italic text-xl">List is Empty, Add New Note</p>) }
         </div> 
-        {openModal && <Modal handleModal={handleModal} openModal={openModal} setOpenModal={setOpenModal} /> }
+        {openModal && <Modal setOpenModal={setOpenModal} editingNote={editingNote} handleEditNote={handleEditNote} /> }
     </div>
   )
 }
@@ -90,7 +96,10 @@ const NoteApp = () => {
 export default NoteApp
 
 
-const Modal = ({ setOpenModal }) => {
+const Modal = ({ setOpenModal, editingNote, handleEditNote }) => {
+    const [title, setTitle] = useState()
+    const [body, setBody] = useState()
+
     return (
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
             <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 p-10">
@@ -102,11 +111,15 @@ const Modal = ({ setOpenModal }) => {
                         <input
                             className=" text-black w-full px-5 pb-2 bg-transparent border-b border-gray-400 outline-none"
                             required
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
                         />
                         <textarea
                             className=" text-black w-full px-5 py-2 bg-transparent border border-gray-400 outline-none resize-none h-52 
                             mt-6 "
                             required
+                            value={body}
+                            onChange={(e) => setBody(e.target.value)}
                         />
                     </form>
                     <div className=" mt-5 space-x-2">
