@@ -81,7 +81,7 @@ const NoteApp = () => {
                 </ul>
             </div>) : (<p className=" text-center italic text-xl">List is Empty, Add New Note</p>) }
         </div> 
-        {openModal && <Modal /> }
+        {openModal && <Modal handleModal={handleModal} openModal={openModal} setOpenModal={setOpenModal} /> }
     </div>
   )
 }
@@ -89,17 +89,28 @@ const NoteApp = () => {
 export default NoteApp
 
 
-const Modal = () => {
+const Modal = ({ openModal, setOpenModal, handleModal }) => {
     return (
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
             <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 p-10">
                 <div className=" flex flex-col">
-                    <button className=" self-end">
+                    <button onClick={() => setOpenModal(false)} className=" self-end">
                         <FaTimes className=" text-black text-4xl p-2 border border-black rounded-full" />
                     </button>
-                    <form>
-                        
+                    <form className=" mt-10">
+                        <input
+                            className=" w-full px-5 pb-2 bg-transparent border-b border-gray-400 outline-none"
+                            required
+                        />
+                        <textarea
+                            className=" w-full px-5 bg-transparent border border-gray-400 outline-none h-52 mt-6 "
+                            required
+                        />
                     </form>
+                    <div className=" space-x-2">
+                        <button onClick={() => setOpenModal(false)} className=" text-black">Cancel</button>
+                        <button className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md">Update</button>
+                    </div>
                 </div>
             </div>
         </div>
