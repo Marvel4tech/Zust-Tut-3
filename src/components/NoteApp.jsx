@@ -9,6 +9,7 @@ const NoteApp = () => {
     const { notes, addNotes, deleteNote } = useNoteStore()
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
+    const [openModal, setOpenModal] = useState(false)
 
     const handleAddNewNote = (e) => {
         e.preventDefault();
@@ -20,6 +21,10 @@ const NoteApp = () => {
 
     const handleDeleteNote = (id) => {
        deleteNote(id);
+    }
+
+    const handleModal = () => {
+        setOpenModal(!openModal)
     }
 
   return (
@@ -61,7 +66,7 @@ const NoteApp = () => {
                             </div>
                             <span className=" mt-auto flex justify-between gap-2">
                                 <button className=" flex items-center justify-center bg-slate-500 hover:bg-slate-600 rounded-sm
-                                text-white flex-1">
+                                text-white flex-1" onClick={handleModal}>
                                     <BiEdit/>
                                 </button>
                                 <button className=" flex items-center justify-center bg-red-500 hover:bg-red-600 text-white 
@@ -74,7 +79,7 @@ const NoteApp = () => {
                 </ul>
             </div>) : (<p className=" text-center italic text-xl">List is Empty, Add New Note</p>) }
         </div> 
-        <Modal /> 
+        {openModal && <Modal /> }
     </div>
   )
 }
@@ -85,15 +90,9 @@ export default NoteApp
 const Modal = () => {
     return (
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
-            <div className=" bg-white w-1/2 h-1/2">
+            <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950">
                 hello
             </div>
         </div>
     )
 }
-
-//<div className=" bg-white/50 fixed top-0 left-0 opacity-50 w-full h-full z-10 flex items-center justify-center">
-   // <div className=" bg-red-600 w-1/2 h-1/2">
-      //  hello
-   // </div>
-//</div>
