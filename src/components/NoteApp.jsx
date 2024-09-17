@@ -23,7 +23,7 @@ const NoteApp = () => {
     }
 
   return (
-    <div className=" max-w-6xl mx-auto">
+    <div className=" max-w-6xl mx-auto relative">
         <div className=" flex flex-col space-y-10">
             <div className=" flex justify-between">
                 <h2 className=" text-xl font-bold">NoteApp + Zustand/middleware</h2>
@@ -73,9 +73,27 @@ const NoteApp = () => {
                     ))}
                 </ul>
             </div>) : (<p className=" text-center italic text-xl">List is Empty, Add New Note</p>) }
-        </div>
+        </div> 
+        <Modal /> 
     </div>
   )
 }
 
 export default NoteApp
+
+
+const Modal = () => {
+    return (
+        <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
+            <div className=" bg-white w-1/2 h-1/2">
+                hello
+            </div>
+        </div>
+    )
+}
+
+//<div className=" bg-white/50 fixed top-0 left-0 opacity-50 w-full h-full z-10 flex items-center justify-center">
+   // <div className=" bg-red-600 w-1/2 h-1/2">
+      //  hello
+   // </div>
+//</div>
