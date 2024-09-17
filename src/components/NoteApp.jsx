@@ -4,6 +4,8 @@ import useNoteStore from "../store/useStore"
 import { v4 } from "uuid"
 import { BsTrash } from "react-icons/bs"
 import { BiEdit } from "react-icons/bi"
+import { FaTimes } from "react-icons/fa"
+
 
 const NoteApp = () => {
     const { notes, addNotes, deleteNote } = useNoteStore()
@@ -90,8 +92,15 @@ export default NoteApp
 const Modal = () => {
     return (
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
-            <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950">
-                hello
+            <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 p-10">
+                <div className=" flex flex-col">
+                    <button className=" self-end">
+                        <FaTimes className=" text-black text-4xl p-2 border border-black rounded-full" />
+                    </button>
+                    <form>
+                        
+                    </form>
+                </div>
             </div>
         </div>
     )
