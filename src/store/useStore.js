@@ -17,3 +17,9 @@ const useNoteStore = create(
 )
 
 export default useNoteStore;
+
+/* editNote: (id, title, body) => set((state) => ({
+    notes: state.notes.map((note) => note.id === id ? {id, title,
+        body} : note)
+        })), 
+*/
