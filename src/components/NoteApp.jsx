@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BiNote } from "react-icons/bi"
 import useNoteStore from "../store/useStore"
 import { v4 } from "uuid"
@@ -12,7 +12,9 @@ const NoteApp = () => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [openModal, setOpenModal] = useState(false)
-    const [editingNote, setEditingNote] = useState(null)
+    //
+    const [selectedNote, setSelectedNote] = useState(null)
+
 
     const handleAddNewNote = (e) => {
         e.preventDefault();
@@ -28,11 +30,7 @@ const NoteApp = () => {
 
     const handleModal = (note) => {
         setOpenModal(!openModal)
-        setEditingNote(note)
-    }
-
-    const handleEditNote = (id, title, body) => {
-        editingNote(id, title, body)
+        setSelectedNote(note)
     }
 
   return (
@@ -75,7 +73,7 @@ const NoteApp = () => {
                             </div>
                             <span className=" mt-auto flex justify-between gap-2">
                                 <button className=" flex items-center justify-center bg-slate-500 hover:bg-slate-600 rounded-sm
-                                text-white flex-1" onClick={handleModal}>
+                                text-white flex-1" onClick={() => handleModal(note)}>
                                     <BiEdit/>
                                 </button>
                                 <button className=" flex items-center justify-center bg-red-500 hover:bg-red-600 text-white 
@@ -88,7 +86,11 @@ const NoteApp = () => {
                 </ul>
             </div>) : (<p className=" text-center italic text-xl">List is Empty, Add New Note</p>) }
         </div> 
-        {openModal && <Modal setOpenModal={setOpenModal} editingNote={editingNote} handleEditNote={handleEditNote} /> }
+        {openModal && 
+            <Modal setOpenModal={setOpenModal} 
+                    note={selectedNote} 
+                    onSave={(updatedNote) => editNote(selectedNote.id, updatedNote)} 
+            /> }
     </div>
   )
 }
@@ -96,9 +98,14 @@ const NoteApp = () => {
 export default NoteApp
 
 
-const Modal = ({ setOpenModal, editingNote, handleEditNote }) => {
-    const [title, setTitle] = useState()
-    const [body, setBody] = useState()
+const Modal = ({ setOpenModal, note, onSave }) => {
+    const [title, setTitle] = useState(note.title);
+    const [body, setBody] = useState(note.body);
+
+    const handleUpdate = () => {
+        onSave({title, body})
+        setOpenModal(false)
+    }
 
     return (
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
@@ -124,7 +131,7 @@ const Modal = ({ setOpenModal, editingNote, handleEditNote }) => {
                     </form>
                     <div className=" mt-5 space-x-2">
                         <button onClick={() => setOpenModal(false)} className=" text-black">Cancel</button>
-                        <button className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md">Update</button>
+                        <button onClick={handleUpdate} className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md">Update</button>
                     </div>
                 </div>
             </div>

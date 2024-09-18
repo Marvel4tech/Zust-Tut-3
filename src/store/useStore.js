@@ -12,8 +12,8 @@ const useNoteStore = create(
             deleteNote: (id) => set((state) => ({
                 notes: state.notes.filter((note) => note.id !== id)
             })),
-            editNote: (id, title, body) => set((state) => ({
-                notes: state.notes.map((note) => note.id === id ? {id, title, body} : note)
+            editNote: (id, updatedNote) => set((state) => ({
+                notes: state.notes.map((note) => note.id === id ? {...note, ...updatedNote} : note)
             })),
         })
     )
@@ -21,8 +21,6 @@ const useNoteStore = create(
 
 export default useNoteStore;
 
-/* editNote: (id, title, body) => set((state) => ({
-    notes: state.notes.map((note) => note.id === id ? {id, title,
-        body} : note)
-        })), 
-*/
+//editNote: (id, title, body) => set((state) => ({
+    //notes: state.notes.map((note) => note.id === id ? {id, title, body} : note)
+//})),
