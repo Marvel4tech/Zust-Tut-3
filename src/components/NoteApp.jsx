@@ -65,11 +65,11 @@ const NoteApp = () => {
             {notes.length > 0 ? (<div className=" border border-white p-5 ">
                 <ul className=" break-words grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
                     {notes.map((note) => (
-                        <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 h-52 
+                        <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 min-h-52 
                         p-4">
                             <div>
                                 <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
-                                <p className=" ">{note.body}</p>
+                                <p className=" mb-5">{note.body}</p>
                             </div>
                             <span className=" mt-auto flex justify-between gap-2">
                                 <button className=" flex items-center justify-center bg-slate-500 hover:bg-slate-600 rounded-sm
