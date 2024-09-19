@@ -12,8 +12,8 @@ const NoteApp = () => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [openModal, setOpenModal] = useState(false)
-    //
     const [selectedNote, setSelectedNote] = useState(null)
+    const [openPostModal, setOpenPostModal] = useState(false)
 
 
     const handleAddNewNote = (e) => {
@@ -31,6 +31,10 @@ const NoteApp = () => {
     const handleModal = (note) => {
         setOpenModal(!openModal)
         setSelectedNote(note)
+    }
+
+    const handlePostModal = () => {
+        setOpenPostModal(!openPostModal)
     }
 
   return (
@@ -67,7 +71,7 @@ const NoteApp = () => {
                     {notes.map((note) => (
                         <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 min-h-52 
                         p-4">
-                            <div>
+                            <div onClick={handlePostModal} >
                                 <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
                                 <p className=" mb-5">{note.body}</p>
                             </div>
@@ -84,13 +88,15 @@ const NoteApp = () => {
                         </li>
                     ))}
                 </ul>
-            </div>) : (<p className=" text-center italic text-xl">List is Empty, Add New Note</p>) }
+            </div>) : (<p className=" text-center italic text-xl">List is Empty, Add Note</p>) }
         </div> 
         {openModal && 
             <Modal setOpenModal={setOpenModal} 
                     note={selectedNote} 
                     onSave={(updatedNote) => editNote(selectedNote.id, updatedNote)} 
-            /> }
+            /> 
+        }
+        {openPostModal && <PostModal />}
     </div>
   )
 }
@@ -134,6 +140,18 @@ const Modal = ({ setOpenModal, note, onSave }) => {
                         <button onClick={handleUpdate} className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md">Update</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    )
+}
+
+
+const PostModal = () => {
+
+    return(
+        <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
+            <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 p-10">
+                hello
             </div>
         </div>
     )
