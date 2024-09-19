@@ -73,7 +73,7 @@ const NoteApp = () => {
                         p-4">
                             <div onClick={handlePostModal} >
                                 <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
-                                <p className=" mb-5">{note.body}</p>
+                                <p className=" mb-5">{note.body.slice(0, 200)}{note.body.length > 200 ? '...' : ''}</p>
                             </div>
                             <span className=" mt-auto flex justify-between gap-2">
                                 <button className=" flex items-center justify-center bg-slate-500 hover:bg-slate-600 rounded-sm
@@ -137,7 +137,9 @@ const Modal = ({ setOpenModal, note, onSave }) => {
                     </form>
                     <div className=" mt-5 space-x-2">
                         <button onClick={() => setOpenModal(false)} className=" text-black">Cancel</button>
-                        <button onClick={handleUpdate} className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md">Update</button>
+                        <button onClick={handleUpdate} className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md">
+                            Update
+                        </button>
                     </div>
                 </div>
             </div>
