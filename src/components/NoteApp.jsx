@@ -18,7 +18,10 @@ const NoteApp = () => {
 
     const handleAddNewNote = (e) => {
         e.preventDefault();
-        const newNote = { id: v4(), title, body };
+        const newNote = { id: v4(),
+                          title, 
+                          body, 
+                        };
         addNotes(newNote);
         setTitle('');
         setBody('');
@@ -73,8 +76,9 @@ const NoteApp = () => {
                         <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 min-h-52 
                         p-4">
                             <div onClick={() => handlePostModal(note)} >
-                                <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
-                                <p className=" mb-5">{note.body.slice(0, 200)}{note.body.length > 200 ? '...' : ''}</p>
+                                <h2 className=" text-lg font-bold mb-3">{note.title}</h2>
+                                <p className=" mb-[6px]">{note.body.slice(0, 200)}{note.body.length > 200 ? '...' : ''}</p>
+                                <p className=" text-gray-400 px-1 py-1 text-sm mb-5 italic">{note.createdAt}</p>
                             </div>
                             <span className=" mt-auto flex justify-between gap-2">
                                 <button className=" flex items-center justify-center bg-slate-500 hover:bg-slate-600 rounded-sm

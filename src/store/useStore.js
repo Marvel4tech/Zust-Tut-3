@@ -8,7 +8,11 @@ const useNoteStore = create(
             notes: [],
             currentNote: null,
             addNotes: (addNote) => set((state) => ({ notes: [...state.notes, 
-                {id: v4(), title: addNote.title, body: addNote.body}]
+                {id: v4(), 
+                 title: addNote.title, 
+                 body: addNote.body,
+                 createdAt: new Date().toLocaleDateString(),
+                }]
             })),
             deleteNote: (id) => set((state) => ({
                 notes: state.notes.filter((note) => note.id !== id)
