@@ -73,7 +73,7 @@ const NoteApp = () => {
             {notes.length > 0 ? (<div className=" border border-white p-5 ">
                 <ul className=" break-words grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full">
                     {notes.map((note) => (
-                        <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 min-h-52 
+                        <li key={note.id} className=" flex flex-col bg-white dark:bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 min-h-52 
                         p-4">
                             <div onClick={() => handlePostModal(note)} >
                                 <h2 className=" text-lg font-bold mb-3">{note.title}</h2>
