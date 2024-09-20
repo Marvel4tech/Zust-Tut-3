@@ -6,6 +6,7 @@ const useNoteStore = create(
     persist(
         (set) => ({
             notes: [],
+            currentNote: null,
             addNotes: (addNote) => set((state) => ({ notes: [...state.notes, 
                 {id: v4(), title: addNote.title, body: addNote.body}]
             })),
@@ -15,6 +16,7 @@ const useNoteStore = create(
             editNote: (id, updatedNote) => set((state) => ({
                 notes: state.notes.map((note) => note.id === id ? {...note, ...updatedNote} : note)
             })),
+            setCurrentNote: (note) => set({ currentNote: note })
         })
     )
 )

@@ -8,7 +8,7 @@ import { FaTimes } from "react-icons/fa"
 
 
 const NoteApp = () => {
-    const { notes, addNotes, deleteNote, editNote } = useNoteStore()
+    const { notes, addNotes, deleteNote, editNote, setCurrentNote } = useNoteStore()
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [openModal, setOpenModal] = useState(false)
@@ -33,7 +33,8 @@ const NoteApp = () => {
         setSelectedNote(note)
     }
 
-    const handlePostModal = () => {
+    const handlePostModal = (note) => {
+        setCurrentNote(note)
         setOpenPostModal(!openPostModal)
     }
 
@@ -71,7 +72,7 @@ const NoteApp = () => {
                     {notes.map((note) => (
                         <li key={note.id} className=" flex flex-col bg-blue-950 border border-blue-500 shadow-inner shadow-blue-500 min-h-52 
                         p-4">
-                            <div onClick={handlePostModal} >
+                            <div onClick={() => handlePostModal(note)} >
                                 <h2 className=" text-lg font-bold mb-2">{note.title}</h2>
                                 <p className=" mb-5">{note.body.slice(0, 200)}{note.body.length > 200 ? '...' : ''}</p>
                             </div>
@@ -148,13 +149,14 @@ const Modal = ({ setOpenModal, note, onSave }) => {
 }
 
 
-const PostModal = ({ selectedNote }) => {
+const PostModal = ({ }) => {
+    const { currentNote } = useNoteStore()
 
     return(
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
             <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 p-10">
-                <h2 className=" text-black">{selectedNote.title}</h2>
-                <p>{selectedNote.body}</p>
+                <h2 className=" text-black">{currentNote.title}</h2>
+                <p className=" text-black">{currentNote.body}</p>
             </div>
         </div>
     )
