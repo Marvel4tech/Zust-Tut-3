@@ -148,12 +148,13 @@ const Modal = ({ setOpenModal, note, onSave }) => {
 }
 
 
-const PostModal = () => {
+const PostModal = ({ selectedNote }) => {
 
     return(
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
             <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 p-10">
-                hello
+                <h2 className=" text-black">{selectedNote.title}</h2>
+                <p>{selectedNote.body}</p>
             </div>
         </div>
     )
