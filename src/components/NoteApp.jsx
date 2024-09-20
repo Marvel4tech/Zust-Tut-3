@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { BiNote } from "react-icons/bi"
 import useNoteStore from "../store/useStore"
 import { v4 } from "uuid"
@@ -97,7 +97,7 @@ const NoteApp = () => {
                     onSave={(updatedNote) => editNote(selectedNote.id, updatedNote)} 
             /> 
         }
-        {openPostModal && <PostModal />}
+        {openPostModal && <PostModal setOpenPostModal={setOpenPostModal} />}
     </div>
   )
 }
@@ -149,14 +149,19 @@ const Modal = ({ setOpenModal, note, onSave }) => {
 }
 
 
-const PostModal = ({ }) => {
+const PostModal = ({ setOpenPostModal }) => {
     const { currentNote } = useNoteStore()
 
     return(
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
             <div className=" bg-white w-full h-2/3 md:w-3/4 md:h-2/3 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 p-10">
-                <h2 className=" text-black">{currentNote.title}</h2>
-                <p className=" text-black">{currentNote.body}</p>
+                <div className=" flex flex-col">
+                    <button onClick={() => setOpenPostModal(false)} className=" self-end">
+                        <FaTimes className=" text-black text-4xl p-2 border border-black rounded-full mb-10" />
+                    </button>
+                    <h2 className=" text-black text-3xl font-bold mb-5">{currentNote.title}</h2>
+                    <p className=" text-black">{currentNote.body}</p>
+                </div>
             </div>
         </div>
     )
