@@ -160,7 +160,7 @@ const PostModal = ({ setOpenPostModal }) => {
 
     return(
         <div className=" bg-blue-800/80 fixed top-0 left-0 w-full h-full z-10 flex items-center justify-center">
-            <div className=" bg-white w-full max-h-[66%] md:h-2/3 md:w-3/4 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 px-10 py-5 overflow-hidden">
+            <div className=" bg-white w-full h-[66%] md:h-2/3 md:w-3/4 lg:w-2/3 rounded-md shadow-lg shadow-blue-950 px-10 py-5">
                 <div className=" flex flex-col">
                     <button onClick={() => setOpenPostModal(false)} className=" self-end">
                         <FaTimes className=" text-black text-2xl p-1 border border-black rounded-full mb-10" />
