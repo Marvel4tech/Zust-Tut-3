@@ -1,6 +1,5 @@
 import NoteApp from "./components/NoteApp"
 
-
 function App() {
 
   return (
