@@ -142,7 +142,13 @@ const NoteApp = () => {
                         shadow-blue-500 min-h-52 p-4">
                             <div onClick={() => handlePostModal(note)} >
                                 <h2 className=" text-lg font-bold mb-3">{note.title}</h2>
-                                {parse(note.body.slice(0, 200))}
+                                <p
+                                    dangerouslySetInnerHTML={{
+                                        __html: DOMPurify.sanitize(
+                                            note.body.replace(/<(?!p|span).*?>|<br\/?>/g, '').substring(0, 200)
+                                        ),
+                                    }}
+                                />
                                 <div className=" flex mb-6 justify-between">
                                     <span className=" text-xs bg-green-700 px-1 py-1 cursor-pointer text-white">Read more</span>
                                     <p className=" text-gray-400 px-1 py-1 text-xs italic">{note.createdAt}</p>
@@ -295,9 +301,13 @@ const PostModal = ({ setOpenPostModal }) => {
                         <FaTimes className=" text-black text-2xl p-1 border border-black rounded-full mb-10" />
                     </button>
                     <h2 className=" text-black text-3xl font-bold mb-5">{currentNote.title}</h2>
-                    <p className=" break-words" dangerouslySetInnerHTML={{__html: currentNote.body}}></p>
+                    <div className="ql-editor" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(currentNote.body) }} />
                 </div>
             </div>
         </div>
     )
 }
+
+
+//<p className=" break-words" dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(currentNote.body)}}></p>
+//<div className="ql-editor" dangerouslySetInnerHTML={{ __html: currentNote.body }} />
