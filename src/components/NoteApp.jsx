@@ -124,7 +124,7 @@ const NoteApp = () => {
                         value={body}
                         onChange={setBody}
                         required
-                        className=" border-b border-gray-400 mb-3 mt-6 text-white"
+                        className=" border-b border-gray-400 mb-3 mt-6 text-black dark:text-white"
                     />
                     <button type="submit" className=" hover:bg-green-600 transition-all duration-300 bg-green-500 px-6 py-2 rounded-md 
                     font-bold shadow-2xl shadow-black">
