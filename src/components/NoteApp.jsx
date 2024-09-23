@@ -127,7 +127,7 @@ const NoteApp = () => {
                         className=" border-b border-gray-400 mb-3 mt-6 text-black dark:text-white"
                     />
                     <button type="submit" className=" hover:bg-green-600 transition-all duration-300 bg-green-500 px-6 py-2 rounded-md 
-                    font-bold shadow-2xl shadow-black">
+                    font-bold shadow-2xl shadow-black text-white">
                         Save
                     </button>
                 </form>
@@ -141,7 +141,7 @@ const NoteApp = () => {
                                 <h2 className=" text-lg font-bold mb-3">{note.title}</h2>
                                 {note.body && <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(note.body.slice(0, 200)) }} className=" mb-[6px]" /> }
                                 <div className=" flex mb-6 justify-between">
-                                    <span className=" text-xs bg-green-700 px-1 py-1 cursor-pointer">Read more</span>
+                                    <span className=" text-xs bg-green-700 px-1 py-1 cursor-pointer text-white">Read more</span>
                                     <p className=" text-gray-400 px-1 py-1 text-xs italic">{note.createdAt}</p>
                                 </div>
                             </div>
@@ -275,7 +275,7 @@ const Modal = ({ setOpenModal, note, onSave }) => {
                     </form>
                     <div className=" mt-5 space-x-2">
                         <button onClick={() => setOpenModal(false)} className=" text-black">Cancel</button>
-                        <button onClick={handleUpdate} className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md">
+                        <button onClick={handleUpdate} className=" bg-green-500 hover:bg-green-600 py-1 px-3 font-semibold rounded-md text-white">
                             Update
                         </button>
                     </div>
