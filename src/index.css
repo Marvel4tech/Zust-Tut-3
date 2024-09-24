@@ -7,4 +7,41 @@
     margin: 0;
     padding: 0;
 }
+
+.ql-editor h1 {
+  @apply text-4xl font-bold mt-0 mb-0;
+}
+
+.ql-editor h2 {
+  @apply text-3xl font-bold mt-0 mb-0;
+}
+
+.ql-editor h3 {
+  @apply text-2xl font-bold mt-0 mb-0;
+}
+
+.ql-editor h4 {
+  @apply text-xl font-bold mt-0 mb-0;
+}
+
+.ql-editor h5 {
+  @apply text-lg font-bold mt-0 mb-0;
+}
+
+.ql-editor h6 {
+  @apply text-base font-bold mt-0 mb-0;
+}
+
+
+.ql-editor .ql-align-center {
+  @apply text-center;
+}
+
+.ql-editor .ql-align-right {
+  @apply text-right;
+}
+
+.ql-editor .ql-align-justify {
+  @apply text-justify;
+}
   

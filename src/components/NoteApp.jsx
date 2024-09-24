@@ -112,7 +112,7 @@ const NoteApp = () => {
                 <BiNote className=" text-4xl" />
             </div>
             <div className=" !mt-10 mb-4 p-5 border">
-                <form className="flex flex-col space-y-32 md:space-y-20" onSubmit={handleAddNewNote}>
+                <form className=" flex flex-col space-y-32 md:space-y-20" onSubmit={handleAddNewNote}>
                     <input
                         placeholder=" What's your note title?"
                         className=" w-full px-5 pb-2 bg-transparent border-b border-gray-400 outline-none"
@@ -149,7 +149,7 @@ const NoteApp = () => {
                                         ),
                                     }}
                                 />
-                                <div className=" flex mb-6 justify-between">
+                                <div className=" flex mb-6 justify-between mt-2">
                                     <span className=" text-xs bg-green-700 px-1 py-1 cursor-pointer text-white">Read more</span>
                                     <p className=" text-gray-400 px-1 py-1 text-xs italic">{note.createdAt}</p>
                                 </div>
